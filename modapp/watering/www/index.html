@@ -983,6 +983,7 @@ var app_status = new Vue({
     last_refresh : null,
     next_refresh : null,
     cur_time : new Date(),
+    scheduler_pause : false,
 
     valves : [],
     programs : [],
@@ -1014,6 +1015,7 @@ var app_status = new Vue({
             this.curtasks = obj.curtasks; 
             this.tasks = obj.next; 
             this.curscheduled = obj.scheduled; 
+            this.scheduler_pause = obj.scheduler_pause;
             cb && cb();
         } );
         this.last_refresh = new Date();

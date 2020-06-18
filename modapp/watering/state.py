@@ -33,12 +33,14 @@ class StateTask(ReprDict):
         self._stop = self._start + self.duration
         self.diff = self._stop - self._start
         self.state = self.diff > 0
+        return self
 
     def stop(self):
         self.duration = self._stop - self._start
         self._start = None
         self._stop = None
         self.state = False
+        return self
 
     def chk_valid(self):
         now = _time()
@@ -61,6 +63,7 @@ class State(Module,ReprDict):
         self.next = []
         self.scheduled = []
         self.state = True
+        self.scheduler_pause = False
     
     def start(self):
         pass
@@ -95,17 +98,22 @@ class State(Module,ReprDict):
             "next" : self.next,
             "scheduled" : self.reprlist(self.scheduled),
             "state" : self.state,
+            "scheduler_pause" : self.scheduler_pause,
         }
     
     def pause_watering(self):
         self.info("pause_watering")
-        self.state = False
-        mod_valves.set_pause(True)
+        #self.state = False
+        self.scheduler_pause = True
+        #mod_valves.set_pause(True)
+        _ = list(map( lambda x : x.stop(), self.curtasks ))
             
     def resume_watering(self):
         self.info("resume_watering")
-        self.state = True
-        mod_valves.set_pause(False)
+        #self.state = True
+        self.scheduler_pause = False
+        #mod_valves.set_pause(False)
+        _ = list(map( lambda x : x.start(), self.curtasks ))
     
     def setup_current(self):
         ## todo refact

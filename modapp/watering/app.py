@@ -250,6 +250,7 @@ def state_kill_post(req,args):
         mod_state.pause_watering()
     else:
         mod_state.resume_watering()
+    mod_scheduler.pause = pause
     req.send_json( { "state" : mod_state.state } ) 
 
 

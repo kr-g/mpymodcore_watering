@@ -59,8 +59,7 @@ class Scheduler(Module,ReprDict):
             self.recalc()
             
         self.cron()    
-            
-    
+      
     def _format(self,now):
         return "{0:02d}:{1:02d}".format(now[3],now[4])
 
@@ -89,8 +88,12 @@ class Scheduler(Module,ReprDict):
         nowf = self._format(now)
         if nowf >= mod_state.scheduled[0].time:
             self.info("cron task found")
-            mod_state.play_schedule()
-          
+            if mod_state.scheduler_pause == False:
+                mod_state.play_schedule()
+            else:
+                self.info("pause mode, dump task")
+                mod_state.scheduled.pop(0)
+        
     def __repr__(self):
         return { "scheduled" : self.reprlist(mod_state.scheduled), }
     
