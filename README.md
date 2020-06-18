@@ -72,3 +72,16 @@ access the application with `http://your-device-ip/static/watering/`
 [`dual licensed`](https://github.com/kr-g/mpymodcore_watering/blob/master/LICENSE).
 read properly.
     
+## other Licenses
+
+|Component	|Homepage	|License|
+|---|---|---|
+mpymodcore_watering |https://github.com/kr-g/mpymodcore_watering| dual licensed | 
+mpymodcore| https://github.com/kr-g/mpymodcore| dual licensed | 
+fontawesome| https://fontawesome.com/| MIT | 
+bootstrap| https://getbootstrap.com/| MIT | 
+jQuery| https://jquery.com/| MIT | 
+Popper| https://popper.js.org|  	MIT | 
+vuejs| https://vuejs.org/| MIT | 
+
+
