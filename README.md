@@ -25,8 +25,7 @@ information first before creating a ticket / issue on github. thanks.
 
 # Hardware, plumbing installation pictures and videos
 
-refer to [`media`](https://github.com/kr-g/mpymodcore_watering/tree/master/media)
-or [`githubpages`](https://kr-g.github.io/mpymodcore_watering/)
+refer docs on [`githubpages`](https://kr-g.github.io/mpymodcore_watering/)
 
 
 # Required related project(s)
@@ -75,13 +74,13 @@ read properly.
     
 ## other Licenses
 
-|Component	|Homepage	|License|
+|Component  |Homepage   |License|
 |---|---|---|
 mpymodcore| https://github.com/kr-g/mpymodcore| dual licensed | 
 fontawesome| https://fontawesome.com/| MIT | 
 bootstrap| https://getbootstrap.com/| MIT | 
 jQuery| https://jquery.com/| MIT | 
-Popper| https://popper.js.org|  	MIT | 
+Popper| https://popper.js.org|      MIT | 
 vuejs| https://vuejs.org/| MIT | 
 
 
