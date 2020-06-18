@@ -4,7 +4,7 @@
 
 ## Hardware:
 
-  <img width="640" height="480" src="https://raw.githubusercontent.com/kr-g/mpymodcore_watering/master/media/valves_mounted.jpg"></img>
+  <img width="640" height="480" src="https://raw.githubusercontent.com/kr-g/mpymodcore_watering/master/media/valves_mounted.jpg" />
 
 
 
