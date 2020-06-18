@@ -26,6 +26,7 @@ information first before creating a ticket / issue on github. thanks.
 # Hardware, plumbing installation pictures and videos
 
 refer to [`media`](https://github.com/kr-g/mpymodcore_watering/tree/master/media)
+or [`githubpages`](https://kr-g.github.io/mpymodcore_watering/)
 
 
 # Required related project(s)
