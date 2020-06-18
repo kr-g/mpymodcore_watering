@@ -16,3 +16,11 @@
     but don't worry, you can <a href="../../../raw/master/media/valve.mp4" target="_blank">download it</a>
     and watch it with your favorite video player!
   </video>
+
+## Disclaimer
+
+This page is hosted on 
+[github pages](https://pages.github.com/) -
+[Privacy information](https://help.github.com/en/articles/github-privacy-statement)
+  
+ 
