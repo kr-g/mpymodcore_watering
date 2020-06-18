@@ -20,7 +20,7 @@
 ## Disclaimer
 
 This page is hosted on 
-[github pages](https://pages.github.com/) -
+[GitHub Pages](https://pages.github.com/) -
 [Privacy information](https://help.github.com/en/articles/github-privacy-statement)
   
  
