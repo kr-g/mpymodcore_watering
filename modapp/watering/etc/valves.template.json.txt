@@ -1,0 +1,11 @@
+
+{
+    "valves": [
+            { "pin": 15, "name": "Port 1", "disabled": false },
+            { "pin": 13, "name": "Port 2", "disabled": false },
+            { "pin": 14, "name": "Port 3", "disabled": false },
+            { "pin": 23, "name": "Port 4", "disabled": false },
+            { "pin": 26, "name": "Port 5", "disabled": false },
+            { "pin": 25, "name": "Port 6", "disabled": false }
+        ]
+}

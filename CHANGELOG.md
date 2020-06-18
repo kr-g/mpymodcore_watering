@@ -1,0 +1,32 @@
+
+# Changelog
+
+## next version v0.0.3 (initial version)
+
+- created initial skeleton and app base
+- remark: this needs to be build against master branch of `mpy-modcore`
+-
+
+
+## BACKLOG
+
+- valve config module, program pos shifting tbi
+- add auto restart module
+- valve direct control module
+- program module
+- schedule module
+- scheduler module (which program to run)
+- program flow -> do refresh automatically (present: manual trigger with button)
+- refactor using vuex (?)
+- status bar, error handling
+- add flow measure module (stop watering when bounds exceed)
+- add pump module
+- refactor ui design, and allignment
+- form input validation
+- add environment sensor(s) eg temperature, barometer, ...
+- refactor system info also as app (own project on github)
+- refactor authorization (eg only admin can change settings)
+- refactor to fiber (if required)
+- refactor imports
+- 
+
