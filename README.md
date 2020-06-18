@@ -76,7 +76,6 @@ read properly.
 
 |Component	|Homepage	|License|
 |---|---|---|
-mpymodcore_watering |https://github.com/kr-g/mpymodcore_watering| dual licensed | 
 mpymodcore| https://github.com/kr-g/mpymodcore| dual licensed | 
 fontawesome| https://fontawesome.com/| MIT | 
 bootstrap| https://getbootstrap.com/| MIT | 
