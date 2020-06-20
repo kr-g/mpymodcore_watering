@@ -78,7 +78,7 @@ class Valves(Module,ReprDict):
                                                 name=x.name,
                                                 disabled=x.disabled,
                                                 
-                                                sim=True # !!! simulate always
+                                                #sim=True # !!! simulate always
                                                 
                                                 ), self.config.valves ))
         self.info("ports", self.ports )
