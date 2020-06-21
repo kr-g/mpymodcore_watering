@@ -1,6 +1,11 @@
 
 # Changelog
 
+## next version v0.0.4
+
+-
+
+
 ## version v0.0.3 (initial version)
 
 - created initial skeleton and app base
