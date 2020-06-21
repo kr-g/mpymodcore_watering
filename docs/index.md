@@ -4,8 +4,7 @@
 
 ## Hardware:
 
-  <img width="640" height="480" src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/valves_mounted.jpg" />
-
+  <img width="640" src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/valves_mounted.jpg" />
 
 
 ## Valve in action:
@@ -16,6 +15,17 @@
     but don't worry, you can <a href="../../../raw/master/media/valve.mp4" target="_blank">download it</a>
     and watch it with your favorite video player!
   </video>
+
+## Prototype PCB:
+ 
+### Pic A:
+  
+  <img height="640" src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/prototype.jpg" />
+  
+### Pic B:
+  
+  <img width="640" src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/prototype_detail.jpg" />
+  
 
 ## Disclaimer
 
