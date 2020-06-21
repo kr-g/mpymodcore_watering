@@ -1,0 +1,2 @@
+include modapp/watering/etc/*
+include modapp/watering/www/*
