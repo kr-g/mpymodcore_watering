@@ -139,4 +139,6 @@ mod_main.debug_mode = True
 def loop():
     mod_main.loop( cfg, serv.loop )
     
+    
+loop()
 

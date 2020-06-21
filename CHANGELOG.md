@@ -5,7 +5,8 @@
 
 - created initial skeleton and app base
 - remark: this needs to be build against master branch of `mpy-modcore`
--
+- most of the features (backlog) are implemented but in-deep testing is pending
+- 
 
 
 ## BACKLOG

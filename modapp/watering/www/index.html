@@ -144,11 +144,11 @@ body {
           <i class="fas fa-sync"></i>
           reload status</button>
         
-      <button v-if="state" class="btn btn-primary" v-on:click="stop">
+      <button v-if="!scheduler_pause" class="btn btn-primary" v-on:click="stop">
           <i class="fas fa-pause"></i>
           </button>
 
-      <button v-if="!state" class="btn btn-primary" v-on:click="play">
+      <button v-if="scheduler_pause" class="btn btn-primary" v-on:click="play">
           <i class="fas fa-play"></i>
           </button>
 

@@ -59,6 +59,12 @@ such as bootstrap, fontawesome, vuejs, jquery, ... etc
 
 in module `modapp.watering` there is a minimal `boot.py` script.
 
+# Basis Configuration
+
+the default port/pin mapping is in `modapp.watering.etc.valves.template.json.txt`.
+this is used as template if on the board the file `etc/watering/valves.json.txt`
+is not found. make sure that the target board supports the defined pins.
+
 
 # URL - read properly
 

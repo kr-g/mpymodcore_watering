@@ -36,13 +36,15 @@ class StateTask(ReprDict):
         return self
 
     def stop(self):
-        self.duration = self._stop - self._start
+        self.duration = max(self._stop - _time(),0)
         self._start = None
         self._stop = None
         self.state = False
         return self
 
     def chk_valid(self):
+        if mod_state.scheduler_pause==True:
+            return False
         now = _time()
         self.diff = self._stop - now
         self.state = self.diff > 0
@@ -73,7 +75,7 @@ class State(Module,ReprDict):
 
     def __loop_run__(self,config=None,event=None,data=None):
         
-        if self.state==False:
+        if self.scheduler_pause==True:
             # pause on
             return
         
@@ -107,6 +109,7 @@ class State(Module,ReprDict):
         self.scheduler_pause = True
         #mod_valves.set_pause(True)
         _ = list(map( lambda x : x.stop(), self.curtasks ))
+        self.apply_current()
             
     def resume_watering(self):
         self.info("resume_watering")
@@ -114,6 +117,7 @@ class State(Module,ReprDict):
         self.scheduler_pause = False
         #mod_valves.set_pause(False)
         _ = list(map( lambda x : x.start(), self.curtasks ))
+        self.apply_current()
     
     def setup_current(self):
         ## todo refact
