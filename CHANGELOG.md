@@ -1,7 +1,7 @@
 
 # Changelog
 
-## next version v0.0.3 (initial version)
+## version v0.0.3 (initial version)
 
 - created initial skeleton and app base
 - remark: this needs to be build against master branch of `mpy-modcore`
