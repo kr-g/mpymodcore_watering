@@ -1,8 +1,14 @@
 
 # Changelog
 
-## next version v0.0.4
+## next version v0.0.5
 
+-
+
+
+## version v0.0.4
+
+- due to bug in setup.py
 -
 
 
