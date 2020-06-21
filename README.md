@@ -13,9 +13,7 @@ for latest ongoing, or upcoming news
 
 ## Development status
 
-Not yet released on pypi!!! see also `changelog`
-
-Alpha state.
+Alpha state. 
 The API or logical call flow might change without prior notice.
 
 In case your code breaks between two versions check
