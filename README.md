@@ -67,10 +67,10 @@ is not found. make sure that the target board supports the defined pins.
 
 the boot-button (gpio 0) is configured to send a break event to enter repl
 securely after pressing. with calling `loop()` the stopped process can be
-continued. check if the target board is confiured like that.
+continued. check if the target board is configured like that.
 
 the on-board led (gpio 21) will toggle every 5 sec as live ping.
-check if the target board is confiured like that.
+check if the target board is configured like that.
 
 
 # URL - read properly
