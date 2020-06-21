@@ -65,6 +65,13 @@ the default port/pin mapping is in `modapp.watering.etc.valves.template.json.txt
 this is used as template if on the board the file `etc/watering/valves.json.txt`
 is not found. make sure that the target board supports the defined pins.
 
+the boot-button (gpio 0) is configured to send a break event to enter repl
+securely after pressing. with calling `loop()` the stopped process can be
+continued. check if the target board is confiured like that.
+
+the on-board led (gpio 21) will toggle every 5 sec as live ping.
+check if the target board is confiured like that.
+
 
 # URL - read properly
 
