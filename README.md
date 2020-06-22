@@ -57,6 +57,9 @@ such as bootstrap, fontawesome, vuejs, jquery, ... etc
 
 in module `modapp.watering` there is a minimal `boot.py` script.
 
+deploy the source files to the target board using e.g. thonny, mpycntrl, mpfshell, rshell, ...
+
+
 # Basis Configuration
 
 the default port/pin mapping is in `/modapp/watering/etc/valves.template.json.txt`.
