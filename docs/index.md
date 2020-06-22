@@ -4,6 +4,8 @@
 
 ## Hardware:
 
+  magnetic valve 12V, NC (normal closed)
+
   <img width="640" src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/valves_mounted.jpg" />
 
 
