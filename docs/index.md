@@ -4,7 +4,7 @@
 
 ## Hardware:
 
-  magnetic valve 12V, NC (normal closed)
+  Recommended: Magnetic Valve 12V, NC (normal closed), plus plumbing, and garden watering adapters.
 
   <img width="640" src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/valves_mounted.jpg" />
 
