@@ -22,6 +22,10 @@
  
 ### Pic A:
   
+  Solid State Relay board 5V, and 12V jack for Magnetic Valves. 
+  5/12V circuts are completely seperated. Powered by 5V/800mA USB, and 12V/1A (both DC) power supply.
+  DONT power ESP32 board with USB, and additional supply in parallel. It will DESTROY the board!!!
+  
   <img height="640" src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/prototype.jpg" />
   
 ### Pic B:
