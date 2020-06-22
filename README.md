@@ -59,8 +59,8 @@ in module `modapp.watering` there is a minimal `boot.py` script.
 
 # Basis Configuration
 
-the default port/pin mapping is in `modapp.watering.etc.valves.template.json.txt`.
-this is used as template if on the board the file `etc/watering/valves.json.txt`
+the default port/pin mapping is in `/modapp/watering/etc/valves.template.json.txt`.
+this is used as template if on the board the file `/etc/watering/valves.json.txt`
 is not found. make sure that the target board supports the defined pins.
 
 the boot-button (gpio 0) is configured to send a break event to enter repl
