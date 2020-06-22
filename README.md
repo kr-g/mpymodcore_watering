@@ -45,7 +45,7 @@ first (see installation notes there)
 
 install to the mpymodcore_watering (project) folder
     
-    `python3 -m pip install mpymodcore_watering --no-compile --target .` 
+    `python3 -m pip install mpymodcore-watering --no-compile --target .` 
      
 create a symbolic link in ~/repo/mpymodcore/modapp
     
