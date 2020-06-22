@@ -23,7 +23,7 @@ information first before creating a ticket / issue on github. thanks.
 
 # Hardware, plumbing installation pictures and videos
 
-refer docs on [`githubpages`](https://kr-g.github.io/mpymodcore_watering/)
+refer docs on [`GitHub-Pages`](https://kr-g.github.io/mpymodcore_watering/)
 
 
 # Required related project(s)
