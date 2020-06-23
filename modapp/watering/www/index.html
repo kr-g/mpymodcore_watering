@@ -1366,7 +1366,8 @@ var app_system = new Vue({
     },
     restart_hard: function(pos){
         confirm( null, "Restart", function(){
-            this.do_restart_hard();         
+            app_system.do_restart_hard();
+            setTimeout( function(){ console.log("reload page"); location.reload(); }, 10*1000 );         
         });
     },
     restart_soft: function(pos){
