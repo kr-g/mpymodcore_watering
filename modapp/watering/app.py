@@ -170,9 +170,15 @@ def valve_post(req,args):
     port = int(par.port)
     if port<0 or port>len(mod_valves.ports):
         raise Exception("invalid port", port)
+    
+    mod_state.scheduler_pause = True
+    states = list(map( lambda x : x.get_state(), mod_valves.ports ))
+    
     state = par.state.lower()=="true"
-    mod_valves.ports[port].apply(state=state)
-    logger.info( "!!! stop scheduler not implemented!!!" )
+    states[port] = state
+    
+    mod_valves.apply(states)
+    
     req.send_response( )
 
 @router.xget("/valve/:port")
