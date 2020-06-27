@@ -56,6 +56,38 @@
     />
 
 
+## Flow meter sensor:
+
+  To track the water amount a flow-meter sensor is used. Inside there is a small rotor and a Hall sensor.
+  3 wire with 5V, GND, and signal (use resistor 2k2 pulled to 5V). Signal is just HIGH/LOW every time
+  the rotor turns.
+
+### Sensor:
+
+  <img width="640"
+      src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/flow_meter.jpg"
+    />
+
+### Sensor detail:
+
+  <img width="640"
+      src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/flow_meter_detail.jpg"
+    />
+
+### Sensor mounted:
+
+  <img height="640"
+      src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/flow_meter_mounted.jpg"
+    />
+
+
+## Legal:
+
+  &copy; 2020 k.r.goger - 
+  <a href="https://github.com/kr-g/mpymodcore_watering">Project Homepage</a> - 
+  <a href="https://github.com/kr-g/mpymodcore_watering/blob/master/LICENSE">License</a>
+
+
 
 ## Disclaimer
 
