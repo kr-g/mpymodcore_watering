@@ -76,7 +76,7 @@
 
 ### Sensor mounted:
 
-  <img height="640"
+  <img width="640"
       src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/flow_meter_mounted.jpg"
     />
 
