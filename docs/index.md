@@ -93,6 +93,6 @@
 
 This page is hosted on 
 [GitHub Pages](https://pages.github.com/) -
-[Privacy information](https://help.github.com/en/articles/github-privacy-statement)
+for Data Protection refer to [Privacy information](https://help.github.com/en/articles/github-privacy-statement)
   
  
