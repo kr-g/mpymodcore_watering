@@ -44,14 +44,14 @@
 
 ## Prototype in IP Box:
   
-  <img width="640"
+  <img height="640"
       src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/ip_boxed.jpg"
     />
 
 
 ## Valves with plumbing wall mounted:
   
-  <img width="640"
+  <img height="640"
       src="https://github.com/kr-g/mpymodcore_watering/raw/master/docs/media/valves_wall_mount.jpg"
     />
 
