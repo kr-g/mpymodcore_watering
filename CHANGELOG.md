@@ -9,7 +9,8 @@
 ## version v0.0.4
 
 - due to bug in setup.py
--
+- flow meter sensor draft implemenation 
+- 
 
 
 ## version v0.0.3 (initial version)
