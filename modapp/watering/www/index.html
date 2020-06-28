@@ -399,7 +399,7 @@ body {
           <thead>
             <tr >
               <th scope="col">No</th>
-              <th v-for="(v,ii) in valves_cfg" scope="col">Port: {{v.name}}</th>
+              <th v-for="(v,ii) in valves_cfg" scope="col">{{ v.name || ('Port: ' + ii) }}</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
