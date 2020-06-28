@@ -13,6 +13,7 @@ from .schedule import mod_scheduled, reload_schedule
 from .scheduler import mod_scheduler
 from .state import mod_state
 from .autorestart import mod_autorestart
+from .flow_meter import mod_flowmeter
 
 import sys
 import time
@@ -45,11 +46,12 @@ def run_gc(req,args):
 def ping_get(req,args):
     req.send_json( { "ping" : "pong", } )
 
+"""
 @system.get("/exit")
 def ping_get(req,args):
-    sys.exit()
+    sys.ecit()
     req.send_json( { "ping" : "pong", } )
-
+"""
 
 @system.get("/info")
 def info(req,args):
@@ -235,6 +237,11 @@ def state_get(req,args):
     logger.info( "state" )
     req.send_json( dict(mod_state) ) 
 
+@router.get("/state/info")
+def state_get(req,args):
+    logger.info( "state" )
+    req.send_json( { "info_text" : mod_state.info_text, } ) 
+
 @router.post("/state/kill")
 def state_kill_post(req,args):
     mod_state.play_next()
@@ -258,6 +265,21 @@ def state_kill_post(req,args):
         mod_state.resume_watering()
     mod_scheduler.pause = pause
     req.send_json( { "state" : mod_state.state } ) 
+
+@router.get("/flow")
+def flowmeter_get(req,args):
+    logger.info( "state" )
+    req.send_json( { "flow" : dict(mod_flowmeter), } )
+    
+@router.post("/flow/config")
+def flowmeter_post(req,args):
+    par = args.json
+    logger.info( par )
+    
+    mod_flowmeter.save( par.flow )
+    mod_flowmeter.reconfigure()
+    
+    req.send_response( )  
 
 
 def load_config():

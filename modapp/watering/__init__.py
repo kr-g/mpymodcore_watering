@@ -20,4 +20,5 @@ from .schedule import mod_scheduled, reload_schedule
 from .state import mod_state
 from .scheduler import mod_scheduler
 from .autorestart import mod_autorestart
+from .flow_meter import mod_flowmeter
 

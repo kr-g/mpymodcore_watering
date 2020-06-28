@@ -66,6 +66,7 @@ class State(Module,ReprDict):
         self.scheduled = []
         self.state = True
         self.scheduler_pause = False
+        self.info_text = ""
     
     def start(self):
         pass
@@ -101,6 +102,8 @@ class State(Module,ReprDict):
             "scheduled" : self.reprlist(self.scheduled),
             "state" : self.state,
             "scheduler_pause" : self.scheduler_pause,
+            "info_text" : self.info_text,
+            
         }
     
     def pause_watering(self):

@@ -164,8 +164,15 @@ body {
       <span v-if="auto_refresh">Next Update: {{ next_refresh }} </span>
       <span v-if="cur_time">Time: {{ cur_time | time_format }}</span>
 
+      <span>Fan: {{flow.current}} Liter: {{flow.current_liter}} </span>
+      <button class="btn btn-primary" v-on:click="reload_flow">
+        <i class="fas fa-sync"></i>
+            reload flow</button>
+      
+
 <div>&nbsp;</div>
         <h5>Current:</h5>
+
       <div class="table" v-if="valves.length==0">{{ 'Empty' | loading_format }}</div>
 
       <div class="table-responsive-xl" v-if="valves.length>0">
@@ -392,13 +399,13 @@ body {
           <thead>
             <tr >
               <th scope="col">No</th>
-              <th v-for="(v,ii) in valves_cfg" scope="col">Port: {{ii}}</th>
+              <th v-for="(v,ii) in valves_cfg" scope="col">Port: {{v.name}}</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
               <tr v-for="(task,ti) in prog.tasks">
-                  <td>{{ti}}</td>
+                  <td>{{ti+1}}</td>
                   <td v-for="(el,eli) in task" scope="col">
                       <input class="form-control"
                           v-model.number="prog.tasks[ti][eli]">
@@ -547,6 +554,27 @@ body {
               <i class="fas fa-save"></i>
               save</button>
         </div>
+
+        <div v-if="flow">
+            <div>Flow:</div>
+            <div class="input-group mb-3">
+
+              <label for="flow_pin" >Pin:</label>
+              <input class="form-control" id="flow_pin" v-model.number="flow.pin">
+
+              <label for="flow_max" >Max:</label>
+              <input class="form-control" id="flow_max" v-model.number="flow.max">
+
+              <label for="flow_ratio" >Ratio:</label>
+              <input class="form-control" id="flow_ratio" v-model="flow.liter_ratio">
+
+              <button class="btn btn-primary" v-on:click="save_flow">
+                  <i class="fas fa-save"></i>
+                  save</button>
+
+            </div>
+        </div>
+
 
     </div>
     
@@ -949,6 +977,13 @@ function get_scheduled_recalc(cb){
     post("/watering/scheduled/recalc").then( x=> get_scheduled(cb) ); 
 }
 
+function get_flow(cb){
+    get("/watering/flow").then( obj => { 
+        pushobj("flow",obj.flow);
+        cb && cb();
+    }); 
+}
+
 function get_system_info(cb){
     get("/system/info").then( obj => { 
         pushobj("info",obj);
@@ -984,6 +1019,7 @@ var app_status = new Vue({
     next_refresh : null,
     cur_time : new Date(),
     scheduler_pause : false,
+    flow : { current:0, current_liter:0, },
 
     valves : [],
     programs : [],
@@ -1016,12 +1052,18 @@ var app_status = new Vue({
             this.tasks = obj.next; 
             this.curscheduled = obj.scheduled; 
             this.scheduler_pause = obj.scheduler_pause;
+            this.flow_fan = obj.flow_fan;
+            this.flow_liter = obj.flow_liter;
+
             cb && cb();
         } );
         this.last_refresh = new Date();
     },
+    reload_flow : function(){
+        get_flow();
+    },
     reload: function () {
-        get_valves( x=> get_programs( x=> get_state() ) );     
+        get_valves( x=> get_programs( x=> get_state( x=> get_flow() ) ) );     
     },
     stop : function(){
         this.state = false;
@@ -1271,6 +1313,12 @@ var app_settings = new Vue({
     valves_cfg : [],
     timezone_offset : 0,
     restart : { active: false, time: "23:59" },
+    flow : { pin : 35,
+        time_out : 1,
+        time_base : 1000,
+        max : -1,
+        liter_ratio : 100 
+    },
   },
   methods: {
     reload_config: function () {
@@ -1306,7 +1354,10 @@ var app_settings = new Vue({
         );
     },
     save_restart : function(){
-        post("/system/reboot/config", { reboot : this.restart, });
+        return post("/system/reboot/config", { reboot : this.restart, });
+    },
+    save_flow : function(){
+        return post("/watering/flow/config", { flow : this.flow, });
     },
     move_prog_valve : function( pos, d ){
         this.programs.forEach( prog=> {
@@ -1321,6 +1372,13 @@ var app_settings = new Vue({
         this.programs.forEach( prog=> {
             prog.tasks.forEach( task=> {
                 task.splice( pos, 1 );
+            });
+        } );
+    },
+    add_prog_valve : function( pos, d ){
+        this.programs.forEach( prog=> {
+            prog.tasks.forEach( task=> {
+                task.push(0);
             });
         } );
     },
@@ -1345,7 +1403,7 @@ var app_settings = new Vue({
     },
     add_port: function(){
         this.valves_cfg.push({ pin:0, name:"Port "+(this.valves_cfg.length+1), disabled:false, });
-        
+        this.add_prog_valve();
         console.log("todo adjust program");
     },
   },
@@ -1468,7 +1526,9 @@ function get_all(){
                     x=> get_system_info( 
                         x=> get_reboot_config( 
                             x=> get_system_timezone( 
-                                x=> get_state( x=> state_loading=false )
+                                x=> get_state( 
+                                    x=> get_flow ( x=> state_loading=false ) 
+                                )
                             ) 
                         )
                     ) 
