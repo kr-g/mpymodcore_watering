@@ -1,0 +1,9 @@
+{
+    "flow" : {
+        "pin" : 35,
+        "time_out" : 1,
+        "time_base" : 1000,
+        "max" : -1,
+        "liter_ratio" : 0.00125
+    }
+}
