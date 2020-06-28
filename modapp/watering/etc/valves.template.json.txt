@@ -5,7 +5,9 @@
             { "pin": 27, "name": "Port 2", "disabled": false },
             { "pin": 25, "name": "Port 3", "disabled": false },
             { "pin": 26, "name": "Port 4", "disabled": false },
-            { "pin": 33, "name": "Port 5", "disabled": false },
-            { "pin": 32, "name": "Port 6", "disabled": false }
+            { "pin": 32, "name": "Port 5", "disabled": false },
+            { "pin": 33, "name": "Port 6", "disabled": false }
+            { "pin": 18, "name": "Port 7", "disabled": false }
+            { "pin": 23, "name": "Port 8", "disabled": false }
         ]
 }
