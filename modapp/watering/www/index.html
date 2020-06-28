@@ -1294,7 +1294,7 @@ var app_valves = new Vue({
     on_change: function(port){
         state = this.valves[port].result || false;
         post("/watering/valve/"+port+"/"+state).then( 
-            x=> get_state() 
+            x=> get_state( x=> get_valves() ) 
         );
     },
     click: function(port){
