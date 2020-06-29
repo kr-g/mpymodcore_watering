@@ -73,6 +73,8 @@ continued. check if the target board is configured like that.
 the on-board led (gpio 21) will toggle every 5 sec as live ping.
 check if the target board is configured like that.
 
+the flow sensor is configured to accept IRQ from gpio35. 
+
 
 # URL - read properly
 
