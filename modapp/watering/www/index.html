@@ -148,7 +148,7 @@ body {
           <i class="fas fa-pause"></i>
           </button>
 
-      <button v-if="scheduler_pause" class="btn btn-primary" v-on:click="play">
+      <button v-if="scheduler_pause" class="btn btn-danger" v-on:click="play">
           <i class="fas fa-play"></i>
           </button>
 
@@ -249,6 +249,7 @@ body {
               <th scope="col">Name</th>
               <th scope="col">Program</th>             
               <th scope="col">Time</th>             
+              <th scope="col">End</th>             
             </tr>
           </thead>
           <tbody>
@@ -257,6 +258,7 @@ body {
                   <td>{{sched.name}}</td>
                   <td>{{ prog_caption( sched.program ) }}</td>
                   <td>{{sched.time}}</td>
+                  <td>{{ end_time( sched ) }}</td>
               </tr>
               
           </tbody>
@@ -289,6 +291,7 @@ body {
               <th scope="col">Name</th>
               <th scope="col">Program</th>             
               <th scope="col">Time</th>             
+              <th scope="col">End</th>             
               <th scope="col">Weekday</th>             
               <th scope="col">Action</th>
             </tr>
@@ -302,7 +305,12 @@ body {
                           <option v-for="(prog,pi) in programs" :value="prog.id">{{ prog_caption( prog.id ) }}</option>
                         </select>                  
                   </td>
-                  <td><input type="time" class="form-control" v-model="sched.time"></td>
+                  <td>
+                    <input :id="'sched_time_'+sched.id" type="time" class="form-control" v-model="sched.time">
+                  </td>
+                  <td>
+                    {{ end_time( sched ) }}
+                  </td>
                   <td>
                     <span v-for="(d,di) in sched.dow" class="nowrap" >
                         <label class="form-check-label" for="'schedule_weekday_'+i">{{ weekdays[di].substr(0,2) }}</label>
@@ -320,8 +328,9 @@ body {
                   <td>
                     <span class="nowrap">
                         <label class="form-check-label" for="'sched_active_'+i">Active</label>
-                        <input class="form-check form-check-inline align-middle" type="checkbox"
-                            v-model="sched.active" :id="'sched_active_'+i">
+                        <input class="form-check form-check-inline align-middle" 
+                                 type="checkbox"
+                                v-model="sched.active" :id="'sched_active_'+i">
                     </span>
                       
                       </button>
@@ -444,6 +453,8 @@ body {
       <button class="btn btn-primary" v-on:click="reload">
           <i class="fas fa-sync"></i>
           reload</button>
+
+      <span></span>
           
       <table class="table">
           <thead>
@@ -1011,7 +1022,6 @@ function get_state(cb){
 
 //
 
-
 var app_status = new Vue({
   el: '#app-status',
   data: {
@@ -1094,14 +1104,40 @@ var app_status = new Vue({
     },
     prog_caption: function(id){
         progs = this.programs.filter( p=> p.id==id );
-        if( progs.length == 0 )
+        if( progs.length==0 )
             return "ERROR";
-        prog = progs[0];
+        prog=progs[0];
         cap = prog.name.trim();
         if( cap.length==0 ){
             cap = prog.id;
         }
-        return cap;
+        return cap;    
+    },
+    end_time : function( sched ){
+        progs = this.programs.filter( p=> p.id==sched.program );
+        if( progs.length==0 )
+            return "ERROR";
+        prog=progs[0];
+
+        endt = new Date();
+
+        t = sched.time.split(":");
+        endt.setSeconds(0);
+        endt.setMinutes(t[1]);
+        endt.setHours(t[0]);
+
+        ut = endt.getTime();
+ 
+        times = prog.tasks.flat();
+        maxtask = Math.max(...times) * 1000;
+
+        ut += maxtask;
+        endt.setTime(ut);        
+        
+        const options = { hour: '2-digit', minute: '2-digit' };
+        const format = new Intl.DateTimeFormat( "us-us", options ).format;
+
+        return format(endt);           
     },
     
   },
@@ -1178,16 +1214,45 @@ var app_scheduled = new Vue({
         });
     },
     prog_caption: function(id){
+        // todo refactor
         progs = this.programs.filter( p=> p.id==id );
-        if( progs.length == 0 )
+        if( progs.length==0 )
             return "ERROR";
-        prog = progs[0];
+        prog=progs[0];
         cap = prog.name.trim();
         if( cap.length==0 ){
             cap = prog.id;
         }
-        return cap;
+        return cap;    
     },
+    end_time : function( sched ){
+        // todo refactor
+        progs = this.programs.filter( p=> p.id==sched.program );
+        if( progs.length==0 )
+            return "";
+        prog=progs[0];
+
+        endt = new Date();
+
+        t = sched.time.split(":");
+        endt.setSeconds(0);
+        endt.setMinutes(t[1]);
+        endt.setHours(t[0]);
+
+        ut = endt.getTime();
+ 
+        times = prog.tasks.flat();
+        maxtask = Math.max(...times) * 1000;
+
+        ut += maxtask;
+        endt.setTime(ut);        
+        
+        const options = { hour: '2-digit', minute: '2-digit' };
+        const format = new Intl.DateTimeFormat( "us-us", options ).format;
+
+        return format(endt);           
+    },
+
     toggle_days: function(pos,id){
         console.log("toggle_days",pos,id);
         state = this.alldays[id];
