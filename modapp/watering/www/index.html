@@ -326,14 +326,12 @@ body {
                     </span>
                   </td>
                   <td>
-                    <span class="nowrap">
+                    <span class="nowrap" v-bind:class="{ 'btn-warning': !sched.active }" >
                         <label class="form-check-label" for="'sched_active_'+i">Active</label>
-                        <input class="form-check form-check-inline align-middle" 
-                                 type="checkbox"
-                                v-model="sched.active" :id="'sched_active_'+i">
+                        <input class="form-check form-check-inline align-middle" type="checkbox"
+                            v-model="sched.active" :id="'sched_active_'+i">
                     </span>
                       
-                      </button>
                       <button class="btn" 
                               v-on:click="remove(i)" >
                               <i class="fas fa-trash"></i>
@@ -380,7 +378,7 @@ body {
                         </button>
                         <input class="form-control" v-model="prog.name">
                         <div>&nbsp;</div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline" v-bind:class="{ 'btn-warning': !prog.active }" >
                             <label class="form-check-label" for="'prog_chk_'+prog.id">Active:</label>
                             <div>&nbsp;</div>
                             <input class="form-check-input" type="checkbox"
