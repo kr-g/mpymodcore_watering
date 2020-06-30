@@ -1117,6 +1117,9 @@ var app_status = new Vue({
             return "ERROR";
         prog=progs[0];
 
+        sum_max_task = (acc,val) => acc + Math.max(...val); 
+        total = prog.tasks.reduce( sum_max_task, 0 );
+
         endt = new Date();
 
         t = sched.time.split(":");
@@ -1125,11 +1128,7 @@ var app_status = new Vue({
         endt.setHours(t[0]);
 
         ut = endt.getTime();
- 
-        times = prog.tasks.flat();
-        maxtask = Math.max(...times) * 1000;
-
-        ut += maxtask;
+        ut += total * 1000;
         endt.setTime(ut);        
         
         const options = { hour: '2-digit', minute: '2-digit' };
@@ -1227,8 +1226,11 @@ var app_scheduled = new Vue({
         // todo refactor
         progs = this.programs.filter( p=> p.id==sched.program );
         if( progs.length==0 )
-            return "";
+            return "ERROR";
         prog=progs[0];
+
+        sum_max_task = (acc,val) => acc + Math.max(...val); 
+        total = prog.tasks.reduce( sum_max_task, 0 );
 
         endt = new Date();
 
@@ -1238,11 +1240,7 @@ var app_scheduled = new Vue({
         endt.setHours(t[0]);
 
         ut = endt.getTime();
- 
-        times = prog.tasks.flat();
-        maxtask = Math.max(...times) * 1000;
-
-        ut += maxtask;
+        ut += total * 1000;
         endt.setTime(ut);        
         
         const options = { hour: '2-digit', minute: '2-digit' };
