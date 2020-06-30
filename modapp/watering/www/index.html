@@ -255,7 +255,7 @@ body {
               <tr v-for="(sched,i) in curscheduled">
                   <td>{{sched.id}}</td>
                   <td>{{sched.name}}</td>
-                  <td>{{ prog_caption(i) }}</td>
+                  <td>{{ prog_caption( sched.program ) }}</td>
                   <td>{{sched.time}}</td>
               </tr>
               
@@ -298,9 +298,9 @@ body {
                   <td>{{sched.id}}</td>
                   <td><input class="form-control" v-model="sched.name"></td>
                   <td>
-<select class="form-control" v-model="sched.program">
-  <option v-for="(prog,pi) in programs" :value="prog.id">{{ prog_caption(pi) }}</option>
-</select>                  
+                        <select class="form-control" v-model="sched.program">
+                          <option v-for="(prog,pi) in programs" :value="prog.id">{{ prog_caption( prog.id ) }}</option>
+                        </select>                  
                   </td>
                   <td><input type="time" class="form-control" v-model="sched.time"></td>
                   <td>
@@ -1011,6 +1011,7 @@ function get_state(cb){
 
 //
 
+
 var app_status = new Vue({
   el: '#app-status',
   data: {
@@ -1091,10 +1092,14 @@ var app_status = new Vue({
         console.log("kill_current");
         post("/watering/state/kill").then( x=> get_state() );        
     },
-    prog_caption: function(pos){
-        cap = this.programs[pos].name.trim();
+    prog_caption: function(id){
+        progs = this.programs.filter( p=> p.id==id );
+        if( progs.length == 0 )
+            return "ERROR";
+        prog = progs[0];
+        cap = prog.name.trim();
         if( cap.length==0 ){
-            cap = this.programs[pos].id;
+            cap = prog.id;
         }
         return cap;
     },
@@ -1172,10 +1177,14 @@ var app_scheduled = new Vue({
             app_scheduled.remove_schedule(pos);            
         });
     },
-    prog_caption: function(pos){
-        cap = this.programs[pos].name.trim();
+    prog_caption: function(id){
+        progs = this.programs.filter( p=> p.id==id );
+        if( progs.length == 0 )
+            return "ERROR";
+        prog = progs[0];
+        cap = prog.name.trim();
         if( cap.length==0 ){
-            cap = this.programs[pos].id;
+            cap = prog.id;
         }
         return cap;
     },
