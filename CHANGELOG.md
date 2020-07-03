@@ -1,23 +1,10 @@
 
 # Changelog
 
-## version v0.0.5
+## version v0.0.6
 
-- flow meter sensor draft implemenation 
--
-
-
-## version v0.0.4
-
-- due to bug in setup.py
-- 
-
-
-## version v0.0.3 (initial version)
-
-- created initial skeleton and app base
-- remark: this needs to be build against master branch of `mpy-modcore`
-- most of the features (backlog) are implemented but in-deep testing is pending
+- bug fixes
+- smaller ui changes
 - 
 
 
@@ -41,5 +28,25 @@
 - refactor authorization (eg only admin can change settings)
 - refactor to fiber (if required)
 - refactor imports
+- 
+
+
+## version v0.0.5
+
+- flow meter sensor draft implemenation 
+-
+
+
+## version v0.0.4
+
+- due to bug in setup.py
+- 
+
+
+## version v0.0.3 (initial version)
+
+- created initial skeleton and app base
+- remark: this needs to be build against master branch of `mpy-modcore`
+- most of the features (backlog) are implemented but in-deep testing is pending
 - 
 
