@@ -930,10 +930,12 @@ var app_statusbar = new Vue({
     messages : [],
     unread_msg: 0,
     has_error: false,
+    max_items : 100,
   },
   methods: {
     add: function(text,type_,status){
       this.messages.splice( 0,0, new MsgInfo(text,type_,status) )
+      if (this.messages.length >= this.max_items ) this.pop()
       this.update_state()
     },
     pop: function(){
