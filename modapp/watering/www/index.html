@@ -135,7 +135,7 @@ body {
   <li class="nav-item" role="presentation">
     <a class="nav-link" id="license-tab" role="tab" aria-controls="license" aria-selected="false">
 
-    <span id="app-statusbar">
+    <span id="app-statusbar" v-on:click="show_all">
       Notifications
       <i class="far fa-bell"></i>
         <span class="badge "
@@ -725,6 +725,7 @@ body {
   </div>
 </div>
 
+
 </main>
 
 
@@ -901,6 +902,9 @@ var app_statusbar = new Vue({
     clear: function(){
       this.messages = []
       this.update_state()
+    },
+    show_all: function(){
+      console.log("show_all")
     },
   },
 });
