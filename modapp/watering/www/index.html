@@ -763,10 +763,12 @@ async function post(url = '', data = {}) {
         body: JSON.stringify(data), // body data type must match "Content-Type" header
       });
       console.log("post done", url, data);
+      app_statusbar.add( "ok: post " + url, "info" )
       return response; 
   }
   catch(ex){
-    console.log("post failed", url, data, ex );
+    console.log("post failed", url, data, ex )
+    app_statusbar.add( "failed: post " + url, "error" )
     return; 
   }
   finally {
@@ -811,10 +813,13 @@ async function get(url){
   app_busy.leave();
   console.log("get done", url, response.status );
     try{
-        return response.json();
+        jsn = response.json()
+        app_statusbar.add( "ok: get " + url, "info" )
+        return jsn
     } 
     catch( ex ){
         console.log( response );
+        app_statusbar.add( "failed: get " + url, "error" )
         throw ex;
     }
 }
