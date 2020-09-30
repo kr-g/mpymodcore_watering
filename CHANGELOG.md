@@ -1,6 +1,12 @@
 
 # Changelog
 
+## new version v0.0.7
+
+- bug fixes
+- status bar / notifications dialog on tab bar
+-
+
 ## version v0.0.6
 
 - bug fixes
