@@ -148,6 +148,45 @@ body {
       <span v-if="unread_msg>0" v-on:click="clear">
         <i class="fas fa-trash"></i>
       </span>
+      
+        <span id="app-status-view" class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Current</h5>
+                <button type="button" class="close" data-dismiss="modal"            
+                    aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <table class="table table-striped">
+                  <thead>
+                  <tr>
+                    <th scope="col">Time</th>
+                    <th scope="col">Text</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr v-for="(v,ii) in messages">
+                    <td>{{ v.h | digit2_format }}:{{ v.m | digit2_format }}:{{ v.s | digit2_format }}</td>
+                    <td>{{ v.text }}</td>
+                    <td>{{ v.type_ }}</td>
+                    <td>{{ v.status }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"            
+                    data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </span>     
+      
     </span>
 
     </a>
@@ -771,12 +810,12 @@ async function post(url = '', data = {}) {
         body: JSON.stringify(data), // body data type must match "Content-Type" header
       });
       console.log("post done", url, data);
-      app_statusbar.add( "ok: post " + url, "info" )
+      app_statusbar.add( "post " + url, "info", "ok" )
       return response; 
   }
   catch(ex){
     console.log("post failed", url, data, ex )
-    app_statusbar.add( "failed: post " + url, "error" )
+    app_statusbar.add( "post " + url, "error", "failed" )
     return; 
   }
   finally {
@@ -822,12 +861,12 @@ async function get(url){
   console.log("get done", url, response.status );
     try{
         jsn = response.json()
-        app_statusbar.add( "ok: get " + url, "info" )
+        app_statusbar.add( "get " + url, "info", "ok" )
         return jsn
     } 
     catch( ex ){
         console.log( response );
-        app_statusbar.add( "failed: get " + url, "error" )
+        app_statusbar.add( "get " + url, "error", "failed" )
         throw ex;
     }
 }
@@ -844,6 +883,11 @@ Vue.filter('onoff_format', function (value) {
 Vue.filter('loading_format', function (value) {
   if (state_loading) return 'Loading...';
   return value;
+})
+Vue.filter('digit2_format', function (value) {
+  v = value.toString()
+  if (v.length<2) v = "0" + v;
+  return v;
 })
 
 
@@ -868,9 +912,14 @@ var app_busy = new Vue({
 });
 
 class MsgInfo {
-  constructor(text,type_){
+  constructor(text,type_,status){
+    var d = new Date()
+    this.h = d.getHours()
+    this.m = d.getMinutes()
+    this.s = d.getSeconds()
     this.text = text
     this.type_ = type_
+    this.status = status
     this.unread = true
   }
 }
@@ -883,12 +932,12 @@ var app_statusbar = new Vue({
     has_error: false,
   },
   methods: {
-    add: function(text,type_){
-      this.messages.push( new MsgInfo(text,type_) )
+    add: function(text,type_,status){
+      this.messages.splice( 0,0, new MsgInfo(text,type_,status) )
       this.update_state()
     },
     pop: function(){
-      this.messages.shift()
+      this.messages.pop()
       this.update_state()
     },
     update_state: function(){
@@ -906,6 +955,8 @@ var app_statusbar = new Vue({
     },
     show_all: function(){
       console.log("show_all")
+      if (this.messages.length == 0) return
+      $('#app-status-view').modal('show')
     },
   },
 });
