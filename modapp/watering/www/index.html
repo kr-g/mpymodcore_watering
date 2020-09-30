@@ -718,6 +718,10 @@ body {
           v-if="unread_msg>0">
           {{ unread_msg }}
         </span>
+        <i class="fas fa-trash"
+          v-on:click="clear"
+          v-if="unread_msg>0">
+        </i>
 
     </button>    
 </div>
