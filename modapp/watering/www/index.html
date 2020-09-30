@@ -132,6 +132,25 @@ body {
   <li class="nav-item" role="presentation">
     <a class="nav-link" id="license-tab" data-toggle="tab" href="#license" role="tab" aria-controls="license" aria-selected="false">License</a>
   </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="license-tab" role="tab" aria-controls="license" aria-selected="false">
+
+    <span id="app-statusbar">
+      Notifications
+      <i class="far fa-bell"></i>
+        <span class="badge "
+          v-bind:class="{ 'badge-light': !has_error, 'badge-danger' : has_error, }"
+          v-if="unread_msg>0">
+          {{ unread_msg }}
+        </span>
+        <i class="fas fa-trash"
+          v-on:click="clear"
+          v-if="unread_msg>0">
+        </i>
+    </span>
+
+    </a>
+  </li>
 </ul>
 
 <!-- Tab panes -->
@@ -708,23 +727,6 @@ body {
 
 </main>
 
-<div id="app-statusbar">
-    <button type="button" class="btn btn-primary">
-      Notifications
-      <i class="far fa-bell"></i>
-        &nbsp;
-        <span class="badge "
-          v-bind:class="{ 'badge-light': !has_error, 'badge-danger' : has_error, }"
-          v-if="unread_msg>0">
-          {{ unread_msg }}
-        </span>
-        <i class="fas fa-trash"
-          v-on:click="clear"
-          v-if="unread_msg>0">
-        </i>
-
-    </button>    
-</div>
 
 <footer class="footer mt-auto py-3">
   <div class="container">
