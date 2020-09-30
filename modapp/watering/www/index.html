@@ -709,8 +709,16 @@ body {
 </main>
 
 <div id="app-statusbar">
-    <button type="button" class="btn btn-primary" v-if="new_msgs>0">
-      Notifications <span class="badge badge-light">{{ new_msgs }}</span>
+    <button type="button" class="btn btn-primary">
+      Notifications
+      <i class="far fa-bell"></i>
+        &nbsp;
+        <span class="badge "
+          v-bind:class="{ 'badge-light': !has_error, 'badge-danger' : has_error, }"
+          v-if="unread_msg>0">
+          {{ unread_msg }}
+        </span>
+
     </button>    
 </div>
 
@@ -846,14 +854,43 @@ var app_busy = new Vue({
   },
 });
 
+class MsgInfo {
+  constructor(text,type_){
+    this.text = text
+    this.type_ = type_
+    this.unread = true
+  }
+}
+
 var app_statusbar = new Vue({
   el: '#app-statusbar',
   data: {
     messages : [],
-    new_msgs: 0,
+    unread_msg: 0,
+    has_error: false,
   },
   methods: {
-    
+    add: function(text,type_){
+      this.messages.push( new MsgInfo(text,type_) )
+      this.update_state()
+    },
+    pop: function(){
+      this.messages.shift()
+      this.update_state()
+    },
+    update_state: function(){
+      reducer = (acc, val) => val.unread ? acc + 1 : 0
+      this.unread_msg = this.messages.reduce( reducer, 0 )
+      this.has_error = this.messages.some( (e)=> e.type_ == "error" )
+    },
+    mark: function( no ){
+      this.messages[no].unread = false
+      this.update_state()
+    },
+    clear: function(){
+      this.messages = []
+      this.update_state()
+    },
   },
 });
 
@@ -1503,7 +1540,7 @@ var app_system = new Vue({
             post("/system/reboot/modcore", { });         
         });
     },
-   gc: function(){
+    gc: function(){
         get("/system/gc").then( function(obj){
                 console.log( "gc", obj );
                 app_system.reload();
