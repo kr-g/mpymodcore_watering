@@ -5,7 +5,8 @@
 
 - bug fixes
 - status bar / notifications dialog on tab bar
--
+- minimalistic error reporting as status bar notification
+- 
 
 ## version v0.0.6
 
