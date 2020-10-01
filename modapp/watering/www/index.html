@@ -870,7 +870,7 @@ async function get(url){
   }
   console.log("get done", url, response.status );
     try{
-        jsn = response.json()
+        jsn = await response.json()
         app_statusbar.add( "get " + url, "info", "ok" )
         return jsn
     } 
