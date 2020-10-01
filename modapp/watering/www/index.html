@@ -819,7 +819,7 @@ async function post(url = '', data = {}) {
     return; 
   }
   finally {
-      app_busy.leave();
+      app_busy.leave()
   }
 }
 
@@ -852,12 +852,22 @@ function mock_fetch(url){
 async function get(url){
   console.log("get", url);
   app_busy.enter();
-  const response = await fetch(url, {
-    method: 'GET', // *GET, POST, PUT, DELETE, etc.
-    mode: 'no-cors', // no-cors, *cors, same-origin
-    redirect: 'error', // manual, *follow, error
-  })
-  app_busy.leave();
+  var response
+  try {
+      response = await fetch(url, {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        mode: 'no-cors', // no-cors, *cors, same-origin
+        redirect: 'error', // manual, *follow, error
+      })
+  }
+  catch( ex ) {
+    console.log( ex );
+    app_statusbar.add( "get " + url + " " + ex, "error", "failed" )
+    throw ex;
+  }
+  finally {
+    app_busy.leave()
+  }
   console.log("get done", url, response.status );
     try{
         jsn = response.json()
@@ -865,8 +875,8 @@ async function get(url){
         return jsn
     } 
     catch( ex ){
-        console.log( response );
-        app_statusbar.add( "get " + url, "error", "failed" )
+        console.log( response, ex );
+        app_statusbar.add( "get " + url + " " + ex, "error", "failed" )
         throw ex;
     }
 }
