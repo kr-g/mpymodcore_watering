@@ -1,18 +1,9 @@
 
 # Changelog
 
-## version v0.0.7
+## new version v0.0.8
 
-- bug fixes
-- status bar / notifications dialog on tab bar
-- minimalistic error reporting as status bar notification
-- 
-
-## version v0.0.6
-
-- bug fixes
-- smaller ui changes
-- 
+-
 
 
 ## BACKLOG
@@ -35,6 +26,20 @@
 - refactor authorization (eg only admin can change settings)
 - refactor to fiber (if required)
 - refactor imports
+- 
+
+
+## version v0.0.7
+
+- bug fixes
+- status bar / notifications dialog on tab bar
+- minimalistic error reporting as status bar notification
+- 
+
+## version v0.0.6
+
+- bug fixes
+- smaller ui changes
 - 
 
 
