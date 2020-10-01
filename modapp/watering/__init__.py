@@ -22,3 +22,11 @@ from .scheduler import mod_scheduler
 from .autorestart import mod_autorestart
 from .flow_meter import mod_flowmeter
 
+print( "-"*41 )
+print( "mpy modcore " + APPNAME )
+print( "(c) 2020 K. Goger" )
+print( "version  ", VERSION )
+print( "homepage ", "https://github.com/kr-g/mpymodcore_watering" )
+print( "legal    ", "https://github.com/kr-g/mpymodcore_watering/blob/master/LICENSE" )
+print( "-"*41 )
+
