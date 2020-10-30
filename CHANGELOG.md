@@ -1,7 +1,7 @@
 
 # Changelog
 
-## new version v0.0.8
+## version v0.0.8
 
 - PEP8
 - added `__app__.py` for auto discovery and auto configuration (new feature in modcore v0.0.17)
