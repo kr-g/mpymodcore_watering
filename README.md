@@ -1,4 +1,6 @@
 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 # mpymodcore_watering
 
 a garden/ plant watering app for [`mpy-modcore`](https://github.com/kr-g/mpymodcore)
