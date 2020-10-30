@@ -4,7 +4,10 @@
 ## new version v0.0.8
 
 - PEP8
--
+- added `__app__.py` for auto discovery and auto configuration (new feature in modcore v0.0.17)
+- proper testing pending. due to winter season the watering prototype is not running in the garden 
+- `__app__.py` obsoletes `modapp.watering.boot.py`
+- 
 
 
 ## BACKLOG
