@@ -16,7 +16,7 @@ class Watering_app(Plugin):
         # be careful :-/
         stat_rooter = self.generators[0]
         #
-        self.url_caption_tuple_list = [(stat_rooter.root + "/watering/#", None)]
+        self.url_caption_tuple_list = [(stat_rooter.root + "/#", None)]
 
 
 app_ext = Watering_app()

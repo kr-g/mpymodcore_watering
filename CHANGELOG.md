@@ -3,7 +3,8 @@
 
 ## next version v0.0.9
 
--
+- fix modcore plugin url
+- 
 
 
 ## version v0.0.8
