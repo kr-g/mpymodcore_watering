@@ -8,7 +8,7 @@ https://github.com/kr-g/mpymodcore_watering/blob/master/LICENSE
 
 """
 
-VERSION = "v0.0.9"
+VERSION = "v0.0.10a"
 APPNAME = "watering"
 
 from .app import load_config, load_generators, app_config
