@@ -1,7 +1,7 @@
 
 # Changelog
 
-## next version v0.0.9
+## version v0.0.9
 
 - fix modcore plugin url
 - 
