@@ -4,22 +4,9 @@
 ## next version v0.0.10
 
 - fix index html, js bugs in mock backend
+- notification of errors
 - 
 
-
-## version v0.0.9
-
-- fix modcore plugin url
-- 
-
-
-## version v0.0.8
-
-- PEP8
-- added `__app__.py` for auto discovery and auto configuration (new feature in modcore v0.0.17)
-- proper testing pending. due to winter season the watering prototype is not running in the garden 
-- `__app__.py` obsoletes `modapp.watering.boot.py`
-- 
 
 
 ## BACKLOG
@@ -42,6 +29,21 @@
 - refactor authorization (eg only admin can change settings)
 - refactor to fiber (if required)
 - refactor imports
+- 
+
+
+## version v0.0.9
+
+- fix modcore plugin url
+- 
+
+
+## version v0.0.8
+
+- PEP8
+- added `__app__.py` for auto discovery and auto configuration (new feature in modcore v0.0.17)
+- proper testing pending. due to winter season the watering prototype is not running in the garden 
+- `__app__.py` obsoletes `modapp.watering.boot.py`
 - 
 
 

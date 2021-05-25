@@ -140,7 +140,7 @@
                             Notifications
                             <i class="far fa-bell"></i>
                             <span class="badge " v-bind:class="{ 'badge-light': !has_error, 'badge-danger' : has_error, }" v-if="unread_msg>0">
-                                {{ unread_msg }}
+                                {{ msg_hint }}
                             </span>
                         </span>
                         <span v-if="unread_msg>0" v-on:click="clear">
@@ -907,7 +907,9 @@
         el: '#app-statusbar',
         data: {
             messages: [],
+            msg_hint: 0,
             unread_msg: 0,
+            error_msg: 0,
             has_error: false,
             max_items: 100,
         },
@@ -922,9 +924,18 @@
                 this.update_state()
             },
             update_state: function() {
-                reducer = (acc, val) => val.unread ? acc + 1 : 0
+                reducer = (acc, val) => val.unread ? acc + 1 : acc
                 this.unread_msg = this.messages.reduce(reducer, 0)
+
+                reducer_err = (acc, val) => (val.type_ == "error") ? acc + 1 : acc
+                this.error_msg = this.messages.reduce(reducer_err, 0)
+
                 this.has_error = this.messages.some((e) => e.type_ == "error")
+
+                this.msg_hint = this.unread_msg
+                if (this.has_error) {
+                    this.msg_hint += " / " + this.error_msg
+                }
             },
             mark: function(no) {
                 this.messages[no].unread = false
