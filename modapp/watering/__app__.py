@@ -10,7 +10,6 @@ class Watering_app(Plugin):
         self.path_spec = "modapp.watering"
         self.generators = []
         self.generators.extend(load_generators())
-        #self.generators.append(router)
         #
         ## todo refactor
         # be careful :-/
