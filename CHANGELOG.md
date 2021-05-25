@@ -3,7 +3,8 @@
 
 ## next version v0.0.10
 
--
+- fix index html, js bugs in mock backend
+- 
 
 
 ## version v0.0.9
