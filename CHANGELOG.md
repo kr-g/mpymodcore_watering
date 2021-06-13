@@ -1,12 +1,17 @@
 
 # Changelog
 
-## next version v0.0.10
+
+## next version v0.0.11
+
+- 
+
+
+## version v0.0.10
 
 - fix index html, js bugs in mock backend
 - notification of errors
 - 
-
 
 
 ## BACKLOG
